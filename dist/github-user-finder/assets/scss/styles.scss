@@ -1,0 +1,20 @@
+// ==> Config <==
+@import "./config/mixins.scss";
+@import "./config/vars.scss";
+
+// ==> Base <==
+@import "./base/normalize.scss";
+@import "./base/base.scss";
+
+// ==> Theme <==
+@import "./theme/colors.scss";
+
+// ==> Components <==
+@import "./components/svg-icons.scss";
+@import "./components/buttons.scss";
+
+// ==> Helpers <==
+@import "./helpers/scroll.scss";
+
+// ==> Utils <==
+@import "./utils/global-clases.scss";
