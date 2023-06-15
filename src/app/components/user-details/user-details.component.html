@@ -1,0 +1,105 @@
+<div class="mb-l">
+	<article class="p-l mx-auto card">
+		<!-- Heading -->
+		<header
+			class="flex flex-col md-flex-row md-justify-center gap-n align-center mb-n"
+		>
+			<!-- Photo -->
+			<picture class="txt-center card__picture">
+				<img
+					[src]="githubUser.avatar_url || 'assets/icons/user.svg'"
+					[alt]="githubUser.name"
+					class="in-block card__avatar"
+				/>
+			</picture>
+
+			<div>
+				<!-- Name -->
+				<h2 class="txt-center mb-s card__name">
+					{{ githubUser.name || "anonimo" | titlecase }}
+				</h2>
+
+				<!-- User -->
+				<p class="txt-center mb-s">
+					<a [href]="githubUser.html_url" target="_blank" class="card__user">
+						@{{ githubUser.login || "anonimo" }}
+					</a>
+				</p>
+
+				<!-- Created at -->
+				<span class="txt-center card__date">
+					{{ githubUser.created_at || currentDate | date : "dd-MM-Y" }}
+				</span>
+			</div>
+		</header>
+
+		<!-- Body -->
+		<div class="card__body">
+			<!-- Bio -->
+			<p class="txt-center mb-m card__bio">
+				{{ githubUser.bio || "Anonymous" }}
+			</p>
+
+			<!-- Repos - Folowers - Folowing -->
+			<div class="flex flex-wrap gap-n txt-center mb-m card__repo repo">
+				<div class="p-n animation repo__public">
+					<span>Repositories</span>
+					<span>{{ githubUser.public_repos }}0</span>
+				</div>
+
+				<div class="p-n animation repo__followers">
+					<span>Followers</span>
+					<span>{{ githubUser.followers }}0</span>
+				</div>
+
+				<div class="p-n animation repo__following">
+					<span>Following</span>
+					<span>{{ githubUser.following }}0</span>
+				</div>
+			</div>
+
+			<!-- Location -->
+			<p class="flex align-center justify-center gap-s mb-m card__location">
+				<span class="icon cross-center">
+					<svg class="svg-icon">
+						<use href="/assets/icons/icons.svg#location"></use>
+					</svg>
+				</span>
+				<span>{{ githubUser.location || "Anonymous" }}</span>
+			</p>
+
+			<!-- Networks -->
+			<div class="flex gap-n txt-center card__networks networks">
+				<a
+					[href]="githubUser.blog"
+					target="_blank"
+					class="p-n animation networks__link"
+				>
+					<span class="networks__icon">
+						<span class="icon cross-center">
+							<svg class="svg-icon">
+								<use href="/assets/icons/icons.svg#link"></use>
+							</svg>
+						</span>
+					</span>
+					<span>Website</span>
+				</a>
+
+				<a
+					[href]="'@' + githubUser.twitter_username"
+					target="_blank"
+					class="p-n animation networks__link"
+				>
+					<span class="networks__icon">
+						<span class="icon cross-center">
+							<svg class="svg-icon">
+								<use href="/assets/icons/icons.svg#twitter"></use>
+							</svg>
+						</span>
+					</span>
+					<span>@{{ githubUser.twitter_username || "anonymous" }}</span>
+				</a>
+			</div>
+		</div>
+	</article>
+</div>

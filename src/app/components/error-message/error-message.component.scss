@@ -1,0 +1,26 @@
+.error {
+	--puri-modal-width: 500px;
+
+	max-width: var(--puri-modal-width);
+	background-color: var(--puri-danger-rgba);
+	color: var(--puri-danger-500);
+	border: var(--puri-border-width) var(--puri-border-style)
+		var(--puri-danger-500);
+	border-radius: var(--puri-s-radius);
+
+	&__modal {
+		top: var(--puri-xxlarge);
+		transition: transform var(--puri-transi-duration)
+			var(--puri-transi-timing-func);
+		transform: translateX(100vw);
+		transform-origin: right center;
+
+		&.open {
+			transform: translateX(0);
+		}
+	}
+
+	&__title {
+		font-size: 24px;
+	}
+}

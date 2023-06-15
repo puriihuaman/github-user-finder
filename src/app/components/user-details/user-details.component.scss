@@ -1,0 +1,79 @@
+.card {
+	--puri-avatar-size: 120px;
+	--max-width: 600px;
+	box-shadow: var(--puri-dark-shadow);
+	border-radius: var(--puri-s-radius);
+	max-width: var(--max-width);
+
+	&__picture {
+		& button {
+			left: 50%;
+			transform: translateX(-50%);
+			background-color: transparent;
+			border: none;
+			outline: none;
+			color: var(--puri-danger-500);
+			cursor: pointer;
+		}
+	}
+
+	&__avatar {
+		width: var(--puri-avatar-size);
+		height: var(--puri-avatar-size);
+		border-radius: var(--puri-full-radius);
+		object-fit: cover;
+		border: var(--puri-border-width) var(--puri-border-style)
+			var(--puri-dark-300);
+		transition: border-color var(--puri-transi-duration)
+			var(--puri-transi-timing-func);
+	}
+
+	&__user {
+		color: var(--puri-primary-500);
+	}
+
+	&__date {
+		display: inherit;
+		color: var(--puri-dark-500);
+	}
+
+	&__location {
+		span:not(span:last-child) {
+			color: var(--puri-primary-500);
+			fill: var(--puri-primary-500);
+		}
+	}
+}
+
+.repo__public,
+.repo__followers,
+.repo__following {
+	flex: 1;
+	font-size: 90%;
+	background: var(--puri-dark-100);
+	box-shadow: var(--puri-dark-shadow);
+	border-radius: var(--puri-s-radius);
+	width: 100%;
+	min-width: 120px;
+
+	& span:first-child {
+		display: block;
+		margin-bottom: 0.5rem;
+	}
+}
+
+.networks {
+	&__link {
+		flex: 1;
+		text-decoration: none;
+		background: var(--puri-dark-100);
+		box-shadow: var(--puri-dark-shadow);
+		color: var(--puri-primary-500);
+		border-radius: var(--puri-s-radius);
+	}
+
+	&__icon {
+		margin-bottom: 0.5rem;
+		display: inherit;
+	}
+}

@@ -1,0 +1,36 @@
+.favorites {
+	box-shadow: var(--puri-dark-shadow);
+	border-radius: var(--puri-s-radius);
+
+	&__card {
+		background-color: var(--puri-primary-rgba);
+		border-radius: var(--puri-s-radius);
+		max-width: 300px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		& h5 {
+			font-size: 20px;
+		}
+	}
+
+	&__description {
+		color: var(--puri-dark-500);
+	}
+
+	&__empty {
+		background: var(--puri-danger-rgba);
+		border-radius: var(--puri-s-radius);
+		color: var(--puri-danger-500);
+	}
+
+	&__star {
+		color: var(--puri-warning-400);
+	}
+
+	& .link {
+		color: var(--puri-color);
+	}
+}
