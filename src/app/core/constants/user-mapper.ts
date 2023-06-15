@@ -1,4 +1,4 @@
-import { GithubUser } from "../interfaces/user";
+import { GithubUser } from "@core/interfaces/user";
 
 export const UserMapper = (user: any): GithubUser => ({
 	avatar_url: user.avatar_url,
@@ -16,5 +16,3 @@ export const UserMapper = (user: any): GithubUser => ({
 	repos_url: user.repos_url,
 	twitter_username: user.twitter_username,
 });
-
-// fecha :  new Date(`${repoApiObject.created_at}`).toDateString().slice(4),
