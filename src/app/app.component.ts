@@ -1,10 +1,12 @@
 import { Component, inject } from "@angular/core";
 import { GithubService } from "./services/github.service";
 import { environment } from "@env/environment";
-import { catchError, map, of, tap } from "rxjs";
-import { UserMapper } from "@core/constants/mapper";
+import { catchError, map, of } from "rxjs";
+import { UserMapper } from "@core/constants/user-mapper";
 import { GithubUser } from "@core/interfaces/user";
 import { Errors } from "@core/interfaces/errors";
+import { RepositoryMapper } from "@core/constants/repository-mapper";
+import { repository } from "@core/interfaces/repository";
 
 @Component({
 	selector: "app-root",
@@ -33,11 +35,8 @@ export class AppComponent {
 			const userUrl: string = `${environment.API_URL}/${this.txtUser}`;
 
 			this.githubService
-				.getUser(userUrl)
+				.getUserRepository(userUrl)
 				.pipe(
-					tap((res) => {
-						console.log(console.log(res));
-					}),
 					map((data: any) => UserMapper(data)),
 					catchError((error: any) => {
 						this.isError = true;
@@ -70,29 +69,22 @@ export class AppComponent {
 	}
 
 	getRepositoriesWithMoreStars(url: string) {
-		console.log(url);
 		this.githubService
-			.getRepositoriesWithMoreStars(url)
+			.getUserRepository(url)
 			.pipe(
-				// tap((resp: any) => {
-				// 	const repositories = Array.from(resp);
-
-				// 	console.log(
-				// 		repositories
-				// 			.sort((a: any, b: any) => b.stargazers_count - a.stargazers_count)
-				// 			.slice(0, 3)
-				// 	);
-				// }),
 				map((data: any) => {
 					const repositories = Array.from(data);
 
 					return repositories
-						.sort((a: any, b: any) => b.stargazers_count - a.stargazers_count)
+						.map((data: any) => RepositoryMapper(data))
+						.sort(
+							(repoA: repository, repoB: repository) =>
+								repoB.stargazers_count - repoA.stargazers_count
+						)
 						.slice(0, 3);
 				})
 			)
 			.subscribe((resp) => {
-				console.log(resp);
 				this.topRepositories = resp;
 			});
 	}
