@@ -17,7 +17,7 @@ export class AppComponent {
 	private githubService: GithubService = inject(GithubService);
 
 	title = "github-user-finder";
-	txtUser: string = "";
+	txtUser: string = "midudev";
 	githubUser: GithubUser = {} as GithubUser;
 	isEmpty: boolean = false;
 	isError: boolean = false;
