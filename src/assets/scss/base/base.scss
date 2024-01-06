@@ -1,34 +1,22 @@
 // ==> Estilos base <==
-*,
-html {
-	scroll-behavior: smooth;
-}
-
+html,
 body {
-	overflow-x: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.heading-font {
-	font-family: var(--heading-font);
-}
-
-body,
-.main-font {
 	font-family: var(--main-font);
-}
+	line-height: var(--lineHeights-base);
 
-.content {
-	--puri-gutter: 1rem;
-	width: 100%;
-	max-width: var(--puri-max-width);
-	min-width: var(--puri-min-width);
-	margin: 0 auto;
-	padding-left: var(--puri-gutter);
-	padding-right: var(--puri-gutter);
+	background-color: var(--colors-dark-900);
+	color: var(--colors-dark-50);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	transition:
+		var(--transition-property-common),
+		var(--transition-duration-300) var(--transition-easing-ease-in-out);
+
+	background: linear-gradient(
+		to top,
+
+		var(--colors-dark-800),
+		var(--colors-dark-900)
+	);
 }

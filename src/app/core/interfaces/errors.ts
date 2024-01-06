@@ -1,5 +1,6 @@
-export interface Errors {
-	status: number;
+export interface Error {
 	message: string;
-	description: string;
+	name: string;
+	statusCode: number;
+	status: boolean;
 }

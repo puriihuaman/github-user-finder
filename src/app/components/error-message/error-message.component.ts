@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { Errors } from "@core/interfaces/errors";
+import { Error } from "@core/interfaces/errors";
 
 @Component({
 	selector: "app-error-message",
@@ -7,7 +7,7 @@ import { Errors } from "@core/interfaces/errors";
 	styleUrls: ["./error-message.component.scss"],
 })
 export class ErrorMessageComponent {
-	@Input() errors: Errors = {} as Errors;
+	@Input() errors: Error = {} as Error;
 	@Input() isError: boolean = false;
 
 	ngOnInit(): void {}

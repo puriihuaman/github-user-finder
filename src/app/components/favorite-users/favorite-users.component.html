@@ -1,27 +1,26 @@
-<section class="mb-l">
-	<div class="p-l txt-center favorites">
-		<h2 class="my-n favorites__caption">Repositories with the most stars</h2>
+<section>
+	<div class="favorites">
+		<h2 class="title">Repositories with the most stars</h2>
 
-		<div class="">
+		<div class="repositories">
 			<ng-container *ngIf="topRepositories.length <= 0">
-				<div class="py-n favorites__empty">
-					<p class="">No repositories</p>
+				<div class="alert">
+					<p class="">This user has no repositories</p>
 				</div>
 			</ng-container>
 
+			<app-loading *ngIf="loading" />
+
 			<ng-container *ngFor="let repository of topRepositories">
-				<article
-					[id]="repository.node_id"
-					class="p-n mb-n ml-auto mr-auto favorites__card"
-				>
-					<header class="mb-s">
+				<article [id]="repository.node_id" class="card">
+					<header class="header">
 						<h3>{{ repository.name | titlecase }}</h3>
 					</header>
 
 					<div>
-						<p class="favorites__description">{{ repository.description }}</p>
+						<p class="description">{{ repository.description }}</p>
 
-						<footer class="pt-n">
+						<footer class="footer">
 							<p>
 								<a
 									[href]="repository.html_url"
@@ -29,22 +28,16 @@
 									target="_blank"
 									class="link"
 								>
-									<span class="icon cross-center">
-										<svg class="svg-icon">
-											<use href="/assets/icons/icons.svg#github"></use>
-										</svg>
-									</span>
+									<app-svg-icon iconID="github" otherClass="icon-sm" />
 								</a>
 							</p>
 
-							<p class="pt-n in-flex gap-s">
-								<span class="favorites__star">
-									<span class="icon cross-center">
-										<svg class="svg-icon">
-											<use href="/assets/icons/icons.svg#star-fill"></use>
-										</svg>
-									</span>
-								</span>
+							<p class="star-details">
+								<app-svg-icon
+									iconID="star-fill"
+									otherClass="icon-sm"
+									ngClass="star"
+								/>
 								<span>{{ repository.stargazers_count }}</span>
 							</p>
 						</footer>

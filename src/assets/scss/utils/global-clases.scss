@@ -1,17 +1,44 @@
-.z-back {
-	z-index: var(--z-back);
+.container {
+	width: var(--sizes-full);
+	max-width: var(--breakpoint-lg);
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+	height: inherit;
 }
 
-.animation {
-	--puri-transi-property: background-color, border-color, text-decoration-color,
-		fill, stroke, box-shadow, mix-blend-mode;
-	--puri-transi-timing-func: cubic-bezier(0.4, 0, 0.2, 1);
-	--puri-transi-duration: 0.8s;
-
-	transition: var(--puri-transi-property),
-		var(--puri-transi-duration) var(--puri-transi-timing-func), color 0.4s;
+@keyframes floating {
+	50% {
+		transform: translateY(-10px);
+	}
 }
 
-.capitalize {
-	text-transform: capitalize;
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+@keyframes ping {
+	75%,
+	100% {
+		transform: scale(2);
+		opacity: 0;
+	}
+}
+
+@keyframes bounce {
+	0%,
+	100% {
+		transform: translateY(-25%);
+		animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+	}
+	50% {
+		transform: translateY(0);
+		animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+	}
 }

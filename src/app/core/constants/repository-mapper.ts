@@ -1,4 +1,4 @@
-import { repository } from "@core/interfaces/repository";
+import { repository } from "@core/interfaces/repository-user";
 
 export const RepositoryMapper = (repository: any): repository => ({
 	description: repository.description,

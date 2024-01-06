@@ -1,12 +1,9 @@
 import { Component, inject } from "@angular/core";
+import { Error } from "@core/interfaces/errors";
+import { Repository, RepositoryResults } from "@core/interfaces/repository";
+import { RepositoryUser } from "@core/interfaces/repository-user";
+import { EMPTY, Observable, catchError, map, tap } from "rxjs";
 import { GithubService } from "./services/github.service";
-import { environment } from "@env/environment";
-import { catchError, map, of } from "rxjs";
-import { UserMapper } from "@core/constants/user-mapper";
-import { GithubUser } from "@core/interfaces/user";
-import { Errors } from "@core/interfaces/errors";
-import { RepositoryMapper } from "@core/constants/repository-mapper";
-import { repository } from "@core/interfaces/repository";
 
 @Component({
 	selector: "app-root",
@@ -14,77 +11,70 @@ import { repository } from "@core/interfaces/repository";
 	styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-	private githubService: GithubService = inject(GithubService);
+	private _githubService: GithubService = inject(GithubService);
+	repositoryResult$!: Observable<RepositoryResults>;
 
-	title = "github-user-finder";
-	txtUser: string = "midudev";
-	githubUser: GithubUser = {} as GithubUser;
-	isEmpty: boolean = false;
+	title: string = "github-user-finder";
+	githubUser: RepositoryUser = {} as RepositoryUser;
+	loading: boolean = false;
 	isError: boolean = false;
-	errors: Errors = {} as Errors;
+	errors: Error = {} as Error;
 	topRepositories: any[] = [];
 
 	ngOnInit(): void {
-		this.txtUser = "midudev";
+		this.getUser("puriihuaman");
 	}
 
-	public getUser() {
-		const txtValue = this.txtUser;
+	public searchTerm(term: string): void {
+		this.getUser(term);
+	}
+	public getUser(user: string): void {
+		this._githubService
+			.getRepositoryFromUser(user)
+			.pipe(
+				tap(({ success, repositoryUser }: RepositoryResults): void => {
+					this.getRepositoriesWithMoreStars(repositoryUser.repos_url);
+					this.loading = true;
+				}),
+				map(
+					({ repositoryUser }: RepositoryResults): RepositoryUser =>
+						repositoryUser,
+				),
 
-		if (this.txtUser !== "") {
-			const userUrl: string = `${environment.API_URL}/${this.txtUser}`;
+				catchError((error: Error) => {
+					this.loading = true;
+					this.errors = error;
+					return EMPTY;
+				}),
+			)
+			.subscribe(
+				(repository: RepositoryUser): RepositoryUser =>
+					(this.githubUser = repository),
+			);
 
-			this.githubService
-				.getUserRepository(userUrl)
-				.pipe(
-					map((data: any) => UserMapper(data)),
-					catchError((error: any) => {
-						this.isError = true;
-
-						if (error?.status === 404 && !error.ok) {
-							this.errors = {
-								status: error.status,
-								message: error.error.message,
-								description: `Error in the request and/or User "${txtValue}" not found`,
-							};
-						}
-
-						return of();
-					})
-				)
-				.subscribe((user: GithubUser) => {
-					this.getRepositoriesWithMoreStars(user.repos_url);
-					this.githubUser = user;
-				});
-
-			this.isEmpty = false;
-			this.txtUser = "";
-		} else {
-			this.isEmpty = true;
-		}
-
-		setTimeout(() => {
+		this.loading = true;
+		setTimeout((): void => {
+			this.loading = false;
 			this.isError = false;
 		}, 3000);
 	}
 
-	getRepositoriesWithMoreStars(url: string) {
-		this.githubService
-			.getUserRepository(url)
+	getRepositoriesWithMoreStars(url: string): void {
+		this._githubService
+			.getRepositories(url)
 			.pipe(
-				map((data: any) => {
-					const repositories = Array.from(data);
-
-					return repositories
-						.map((data: any) => RepositoryMapper(data))
-						.sort(
-							(repoA: repository, repoB: repository) =>
-								repoB.stargazers_count - repoA.stargazers_count
-						)
-						.slice(0, 3);
-				})
+				map((repositories: Repository[]): Repository[] => {
+					return (
+						repositories
+							.sort(
+								(repoA: Repository, repoB: Repository): number =>
+									repoB.stargazers_count - repoA.stargazers_count,
+							)
+							.slice(0, 3) || []
+					);
+				}),
 			)
-			.subscribe((resp) => {
+			.subscribe((resp: Repository[]): void => {
 				this.topRepositories = resp;
 			});
 	}

@@ -1,28 +1,4 @@
-main {
+.main {
 	min-height: 100vh;
-}
-
-.searcher {
-	--max-width: 600px;
-	max-width: var(--max-width);
-
-	&__input {
-		border: var(--puri-border);
-		box-shadow: var(--puri-dark-shadow);
-		color: var(--puri-dark-500);
-
-		&.alert {
-			border-color: var(--puri-danger-500);
-		}
-
-		&.success {
-			border-color: var(--puri-success-500);
-		}
-	}
-
-	&__alert {
-		color: var(--puri-danger-500);
-		transform: translateY(20px);
-		text-transform: capitalize;
-	}
+	padding: var(--space-10) var(--space-4);
 }
