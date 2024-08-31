@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-4);
+  padding: var(--space-4);
+  width: 100%;
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (width >= 768px) {
+    max-width: var(--sizes-2xl);
+  }
+}

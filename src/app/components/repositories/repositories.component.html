@@ -1,0 +1,5 @@
+<section class="repositories">
+  @for (repository of repositories; track repository.node_id) {
+  <app-repository [repository]="repository"></app-repository>
+  }
+</section>

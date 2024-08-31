@@ -1,0 +1,49 @@
+.repository {
+  padding: var(--space-6);
+  background-color: var(--gray-900);
+  border-radius: var(--radii-md);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-property-common),
+    var(--transition-easing-ease-in-out), var(--transition-duration-300);
+
+  &__header {
+    margin-bottom: var(--space-3);
+  }
+
+  &__name {
+    font-family: var(--heading-font);
+    font-size: var(--fontSizes-lg);
+  }
+
+  &__description {
+    color: var(--gray-300);
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-3);
+  }
+
+  &__github {
+    transition: var(--transition-property-common),
+      var(--transition-easing-ease-in-out), var(--transition-duration-300);
+    &:hover {
+      color: var(--purple-500);
+    }
+  }
+
+  &__star {
+    display: flex;
+    column-gap: var(--space-2);
+    align-items: center;
+    color: var(--yellow-500);
+  }
+
+  &__amount {
+    color: var(--gray-300);
+    transition: var(--transition-property-common),
+      var(--transition-easing-ease-in-out), var(--transition-duration-300);
+  }
+}

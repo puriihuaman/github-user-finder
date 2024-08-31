@@ -1,0 +1,70 @@
+<article class="profile">
+  <header class="profile__header">
+    <div class="profile__picture">
+      <img [src]="user.avatar_url" [alt]="user.name" />
+    </div>
+
+    <div class="profile__content">
+      <div class="profile__info">
+        <h3 class="profile__name">{{ user.name }}</h3>
+
+        <a [href]="user.html_url" class="profile__username" target="_blank">{{
+          "@" + user.login
+        }}</a>
+
+        <p class="profile__location">
+          {{ user.location }}
+        </p>
+        <p class="profile__date">
+          {{ user.created_at }}
+        </p>
+      </div>
+
+      <div class="profile__network">
+        <a
+          [href]="'https://twitter.com/' + user.twitter_username"
+          target="_blank"
+          aria-label="twitter"
+          [title]="'https://twitter.com/' + user.twitter_username"
+          class="profile__twitter"
+        >
+          <app-icon-svg iconID="twitter" />
+        </a>
+
+        <a
+          [href]="user.blog"
+          target="_blank"
+          aria-label="blog"
+          [title]="user.blog"
+          class="profile__blog"
+        >
+          <span app-icon-svg iconID="link"></span>
+          <app-icon-svg iconID="link" />
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="profile__bio">
+    <p>{{ user.bio }}</p>
+  </div>
+
+  <footer class="profile__footer">
+    <dl class="profile__datalist">
+      <div class="profile__datacontent">
+        <dt class="profile__dataterm">{{ user.followers }}</dt>
+        <dd class="profile__datadefinition">Followers</dd>
+      </div>
+
+      <div class="profile__datacontent">
+        <dt class="profile__dataterm">{{ user.following }}</dt>
+        <dd class="profile__datadefinition">Following</dd>
+      </div>
+
+      <div class="profile__datacontent">
+        <dt class="profile__dataterm">{{ user.public_repos }}</dt>
+        <dd class="profile__datadefinition">Public repositories</dd>
+      </div>
+    </dl>
+  </footer>
+</article>

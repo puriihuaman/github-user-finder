@@ -1,0 +1,8 @@
+.repositories {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-4);
+  margin-left: auto;
+  margin-right: auto;
+  width: var(--sizes-full);
+}

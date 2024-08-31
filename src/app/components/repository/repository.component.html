@@ -1,0 +1,28 @@
+<article class="repository">
+  <header class="repository__header">
+    <h3 class="repository__name">{{ repository.name }}</h3>
+  </header>
+
+  <div class="repository__description">
+    <p>{{ repository.description }}</p>
+  </div>
+
+  <footer class="repository__footer">
+    <p>
+      <a
+        [title]="repository.svn_url || repository.html_url"
+        target="_blank"
+        class="repository__github"
+        aria-label="Repository"
+        [href]="repository.svn_url || repository.html_url"
+      >
+        <app-icon-svg iconID="github" />
+      </a>
+    </p>
+    <p class="repository__star">
+      <app-icon-svg iconID="star" />
+
+      <span class="repository__amount">{{ repository.stargazers_count }}</span>
+    </p>
+  </footer>
+</article>
