@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import type { CustomError } from "../../core/CustomError";
+import type { CustomError } from "@core/CustomError";
 
 @Component({
   selector: "app-error-message",

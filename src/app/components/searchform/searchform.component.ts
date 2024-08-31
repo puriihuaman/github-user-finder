@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from "@angular/forms";
-import { IconSvgComponent } from "../icon-svg/icon-svg.component";
+import { IconSvgComponent } from "@components/icon-svg/icon-svg.component";
 
 @Component({
   selector: "app-searchform",

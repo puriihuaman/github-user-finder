@@ -1,7 +1,7 @@
 import { AsyncPipe } from "@angular/common";
 import { Component, Input, type OnInit } from "@angular/core";
-import type { User } from "../../interface/IUser";
-import { IconSvgComponent } from "../icon-svg/icon-svg.component";
+import { IconSvgComponent } from "@components/icon-svg/icon-svg.component";
+import type { User } from "@interface/IUser";
 
 @Component({
   selector: "app-profile",

@@ -2,8 +2,8 @@ import {
   HttpInterceptorFn,
   type HttpErrorResponse,
 } from "@angular/common/http";
+import { CustomError } from "@core/CustomError";
 import { catchError, throwError } from "rxjs";
-import { CustomError } from "../CustomError";
 
 export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(

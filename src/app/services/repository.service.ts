@@ -1,13 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
+import { environment } from "@environment/environment.development";
+import type { Repository, User } from "@interface/IUser";
 import { map, Observable } from "rxjs";
-import type { Repository, User } from "../interface/IUser";
 
 @Injectable({
   providedIn: "root",
 })
 export class RepositoryService {
-  private API_URL: string = "https://api.github.com/users";
+  private API_URL: string = environment.apiUrlBase;
   private httpClient = inject(HttpClient);
 
   constructor() {}

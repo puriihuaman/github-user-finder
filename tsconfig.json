@@ -18,10 +18,15 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      "@environment/*": ["./src/environments/*"],
+      "@services/*": ["./src/app/services/*"],
+      "@interface/*": ["./src/app/interface/*"],
+      "@core/*": ["./src/app/core/*"],
+      "@interceptors/*": ["./src/app/core/interceptors/*"],
+      "@components/*": ["./src/app/components/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
