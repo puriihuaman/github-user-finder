@@ -1,56 +1,20 @@
-<form
-  autoComplete="off"
-  class="form"
-  [formGroup]="user"
-  (submit)="searchUser()"
->
+<form autoComplete="off" class="form" (submit)="searchUser()">
   <div class="form__content">
     <div class="form__searcher">
       <label for="username" class="form__label">Usuario</label>
       <input
         type="search"
-        class="form__search"
         id="username"
         placeholder="Search username..."
         autofocus
-        formControlName="username"
+        name="username"
+        [(ngModel)]="username"
+        [className]="!isValid ? 'form__search invalid' : 'form__search'"
       />
 
-      <!-- <input
-        class={`block w-full p-2.5 bg-dark-100 outline-none border ring-2 ring-transparent border-dark-300 text-current text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:text-dark-50 dark:bg-dark-800 dark:border-dark-800 dark:placeholder:text-dark-400 transition-colors duration-300 ${
-          errors.username && 'focus:ring-red-500 focus:border-red-500'
-        }`}
-        type="search"
-        id="username"
-        placeholder="Search username..."
-        autoFocus
-        {...register('username', {
-          required: {
-            value: true,
-            message: 'El campo es requerido',
-          },
-          minLength: {
-            value: 4,
-            message: 'El campo debe tener al menos 4 caracteres',
-          },
-          validate: (value: string): boolean | string => {
-            if (value.trim() === 'gcpglobal') {
-              return 'No esta permitido buscar este usuario';
-            }
-            return true;
-          },
-          pattern: {
-            value: /^(?!.*gcpglobal).*$/,
-            message: 'No esta permitido buscar este usuario',
-          },
-        })}
-      /> -->
-
-      <!-- {errors.username && (
-        <div class="p-2 text-sm text-red-400">
-          {errors.username.message}
-        </div>
-      )} -->
+      @if (!isValid) {
+      <div class="message">{{ message }}</div>
+      }
     </div>
 
     <button type="submit" class="form__button">

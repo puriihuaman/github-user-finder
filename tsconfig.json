@@ -21,10 +21,11 @@
     "lib": ["ES2022", "dom"],
     "paths": {
       "@environment/*": ["./src/environments/*"],
-      "@services/*": ["./src/app/services/*"],
-      "@interface/*": ["./src/app/interface/*"],
-      "@core/*": ["./src/app/core/*"],
+      "@services/*": ["./src/app/core/services/*"],
+      "@interface/*": ["./src/app/core/interface/*"],
       "@interceptors/*": ["./src/app/core/interceptors/*"],
+      "@models/*": ["./src/app/core/models/*"],
+      "@core/*": ["./src/app/core/*"],
       "@components/*": ["./src/app/components/*"]
     }
   },

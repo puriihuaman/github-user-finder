@@ -1,7 +1,7 @@
 import { AsyncPipe } from "@angular/common";
 import { Component, Input, type OnInit } from "@angular/core";
 import { RepositoryComponent } from "@components/repository/repository.component";
-import type { Repository } from "@interface/IUser";
+import type { Repository } from "@interface/irepository";
 
 @Component({
   selector: "app-repositories",

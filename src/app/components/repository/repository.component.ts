@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { IconSvgComponent } from "@components/icon-svg/icon-svg.component";
-import type { Repository } from "@interface/IUser";
+import type { Repository } from "@interface/irepository";
 
 @Component({
   selector: "app-repository",

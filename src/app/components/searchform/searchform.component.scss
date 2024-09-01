@@ -31,7 +31,7 @@
       border-color: var(--purple-500);
     }
 
-    &.ng-invalid.ng-touched {
+    &.invalid {
       border-color: var(--red-500);
     }
   }
@@ -57,4 +57,10 @@
       transform: scale(0.95);
     }
   }
+}
+
+.message {
+  padding-top: var(--space-1);
+  font-size: var(--fontSizes-sm);
+  color: var(--red-400);
 }

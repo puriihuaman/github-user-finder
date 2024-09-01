@@ -8,9 +8,10 @@ import { ProfileComponent } from "@components/profile/profile.component";
 import { RepositoriesComponent } from "@components/repositories/repositories.component";
 import { RepositoryComponent } from "@components/repository/repository.component";
 import { SearchformComponent } from "@components/searchform/searchform.component";
-import type { CustomError } from "@core/CustomError";
-import type { Repository, User } from "@interface/IUser";
-import { RepositoryService } from "@services/repository.service";
+import type { User } from "@core/interface/iuser";
+import type { CustomError } from "@core/models/CustomError";
+import { RepositoryService } from "@core/services/repository.service";
+import type { Repository } from "@interface/irepository";
 import { catchError, EMPTY, type Observable } from "rxjs";
 
 @Component({

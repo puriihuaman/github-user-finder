@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
+import type { User } from "@core/interface/iuser";
 import { environment } from "@environment/environment.development";
-import type { Repository, User } from "@interface/IUser";
+import type { Repository } from "@interface/irepository";
 import { map, Observable } from "rxjs";
 
 @Injectable({
