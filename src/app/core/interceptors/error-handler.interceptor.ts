@@ -8,7 +8,6 @@ import { catchError, throwError } from "rxjs";
 export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
-      console.log(error);
       if (error.error instanceof ErrorEvent) {
         return throwError(
           (): CustomError =>

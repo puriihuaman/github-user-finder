@@ -1,27 +1,14 @@
 <main class="main">
-  <!-- Form start -->
   <app-searchform (usernameEmitter)="searchUser($event)" />
-
-  <!-- Form end -->
-
-  <!-- Profile start -->
   @if (user$ | async; as user) {
   <app-profile [user]="user"></app-profile>
-  <!-- Repository start -->
   @if (repositories$ | async; as repositories) {
   <app-repositories [repositories]="repositories"></app-repositories>
   } @else {
-  <div>Cargando...</div>
-  }
-  <!-- Repository end -->
-  } @else {
-  <div>Cargando...</div>
-  }
-  <!-- Profile end -->
-
-  @if (errors) {
+  <app-loading />
+  } } @else { @if(hasError) {
   <app-error-message [errorMessage]="errors" />
-  }
+  } @else {
+  <app-loading />
+  } }
 </main>
-
-<router-outlet />

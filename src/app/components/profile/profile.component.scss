@@ -58,14 +58,10 @@
   }
 
   &__username {
-    color: var(--purple-500);
+    color: var(--picton-blue-500);
   }
 
-  &__location {
-    color: var(--gray-400);
-    font-size: var(--fontSizes-sm);
-  }
-
+  &__location,
   &__date {
     color: var(--gray-400);
     font-size: var(--fontSizes-sm);
@@ -85,10 +81,10 @@
 
   &__twitter {
     padding: var(--space-1);
-    color: var(--purple-500);
+    color: var(--picton-blue-500);
 
     &:hover {
-      color: var(--purple-600);
+      color: var(--picton-blue-600);
     }
   }
 

@@ -1,15 +1,12 @@
 .error {
-  position: fixed;
-  bottom: var(--space-6);
-  right: var(--space-6);
+  text-align: center;
 }
 
 .content {
   padding: var(--space-4);
-  text-align: center;
   font-size: var(--fontSizes-sm);
   border-radius: var(--radii-lg);
-  color: var(--red-400);
+  color: var(--red-300);
   background-color: var(--red-900);
   border: 1px solid currentColor;
   display: flex;

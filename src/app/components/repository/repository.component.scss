@@ -27,10 +27,21 @@
   }
 
   &__github {
+    color: var(--picton-blue-500);
     transition: var(--transition-property-common),
       var(--transition-easing-ease-in-out), var(--transition-duration-300);
     &:hover {
-      color: var(--purple-500);
+      color: var(--picton-blue-400);
+      animation: moveToEachSide 500ms infinite alternate;
+
+      @keyframes moveToEachSide {
+        from {
+          transform: rotate(-20deg);
+        }
+        to {
+          transform: rotate(20deg);
+        }
+      }
     }
   }
 
