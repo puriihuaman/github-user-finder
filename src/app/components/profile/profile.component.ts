@@ -1,4 +1,4 @@
-import { AsyncPipe } from "@angular/common";
+import { AsyncPipe, DatePipe } from "@angular/common";
 import { Component, Input, type OnInit } from "@angular/core";
 import { IconSvgComponent } from "@components/icon-svg/icon-svg.component";
 import type { User } from "@core/interface/iuser";
@@ -6,7 +6,7 @@ import type { User } from "@core/interface/iuser";
 @Component({
   selector: "app-profile",
   standalone: true,
-  imports: [AsyncPipe, IconSvgComponent],
+  imports: [AsyncPipe, DatePipe, IconSvgComponent],
   templateUrl: "./profile.component.html",
   styleUrl: "./profile.component.scss",
 })

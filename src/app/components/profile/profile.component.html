@@ -16,7 +16,7 @@
           {{ user.location }}
         </p>
         <p class="profile__date">
-          {{ user.created_at }}
+          {{ user.created_at | date : "mediumDate" }}
         </p>
       </div>
 
